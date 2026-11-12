@@ -1,0 +1,49 @@
+name: Publicar IN625 Process Rank no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter o repositório
+        uses: actions/checkout@v7
+      - name: Preparar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.18.0
+      - name: Instalar pnpm
+        run: npm install --global pnpm@11.25.0
+      - name: Instalar dependências
+        run: pnpm install --frozen-lockfile
+      - name: Compilar site estático
+        run: pnpm build
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v6
+      - name: Enviar artefato estático
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

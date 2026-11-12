@@ -1,0 +1,21 @@
+# TODO — IN625 Process Rank: explicação e publicação no GitHub
+
+## Escopo atual do site
+
+- [x] **Comparação científica das trilhas:** retirar alimentação de pó como objetivo de qualidade e desempate; retirar veto por resultados de blocos multipista. Ordenar e calcular Pareto por adequação geométrica, bandas indicativas e suporte, sem nota arbitrária nem garantia de defeitos. Preservar a referência estrita 10% < DI < 30% e 1/5 < H/W < 1/3: tocar o limite não é atender à faixa. Identificar empates reais sem atribuir superioridade científica a IDs usados para apresentação. Manter condições excluídas/sem suporte acessíveis sem rank ou Pareto fabricados.
+- [x] **Suporte e contexto reutilizáveis:** verificar envelope conjunto dos dados rotulados por resposta, não apenas mínimos/máximos isolados, sem corte arbitrário de distância; tratar dimensões reduzidas; vincular restrições observadas de 300/600 W à identidade da base original; outra base não herda essas restrições automaticamente. Expor motivos de exclusão e suporte por alvo em rótulos curtos.
+- [x] **Dados e incerteza preservados:** não retreinar o modelo, modificar a planilha, trocar previsões primárias ou reduzir bandas Q90. Separar estimativas das médias medidas do treino. Manter métricas OOF, cobertura de 48 para H/W e 22 para h/DI, DI em pontos percentuais no erro. Explicar que Q90 de H/W excede a largura da referência e que nenhuma contenção integral é sustentada, sem declarar todas as trilhas ruins.
+- [x] **Mapa energia–material:** manter Tabela | Mapa e seleção compartilhada. Eixo X = 60P/v [J/mm], eixo Y = 1000F/v [mg/mm]. Pontos coincidentes ficam selecionáveis sem mover coordenadas. Tendências de energia insuficiente/excessiva são conceituais; não há fronteiras calibradas inventadas, zona livre de defeitos ou probabilidade de LoF.
+- [x] **Interface e escopo:** manter filtros do snapshot, tabela, detalhe H/W/h/DI, Qualidade OOF, responsividade e acesso por teclado. Esta versão filtra as condições exportadas; não recebe parâmetros arbitrários ou simula entradas novas no navegador. Preservar rota `/`, logoUrl e build estático.
+
+## Guia e GitHub Pages
+
+- [x] **Explicação para o orientador:** entregar texto pronto para encaminhar e passos práticos de cada seção: resumo 48/12/3/0, Prioridade, Pareto, filtros, tabela, mapa, inspeção de uma condição e Qualidade OOF. Distinguir previsão, média medida do treino, Q90 empírico e probabilidade de defeito não estimável; informar explicitamente que a interface não aceita inputs arbitrários.
+- [x] **Preparação para site público:** workflow GitHub Actions compila Vite e publica `dist/` ao atualizar `main`; `vite.config.ts` usa `/repo/` para project pages e `/` para Pages de usuário, Preview/local. O guia informa como criar o repositório, clonar/copiar com GitHub Desktop, selecionar **Settings → Pages → Source: GitHub Actions** antes do primeiro push, conferir build em Actions, localizar URL e atualizar depois.
+- [x] **Pacote e privacidade:** preparar ZIP atualizado do snapshot atual, com workflow e guia, sem reutilizar o pacote anterior de API dinâmica. O guia avisa que Pages é público e que o repositório público inclui planilha, modelo e relatórios; confirmar autorização com o orientador antes de divulgar.
+- [x] **Verificação local:** TypeScript, 10 regressões de apresentação/mapa e 29 testes Python aprovados; builds Vite aprovados na raiz, em `/in625-process-rank/` e no domínio raiz `<user>.github.io`; snapshot e asset de favicon respeitam o base path. Preview permanece na raiz `/`.
+- [x] **Registro Manus:** integrar e enviar a atualização ao `main` canônico, sem Publish. O usuário ainda precisa criar um repositório na própria conta GitHub, fazer o primeiro push e aguardar o GitHub Actions; nenhum repositório GitHub foi criado/conectado nesta tarefa.
+
+## Evidência resumida do snapshot
+
+O snapshot permanece com 48 condições, 12 elegíveis, 3 alternativas não dominadas e 0 elegíveis com ambas as bandas inteiramente contidas. C015, C027 e C032 empatam no rank 1. C028 (DI=29,9885%) é exibida como 29,99% sem mudar seu valor nem arredondá-la falsamente para fora da faixa. O mapa representa 48 condições em 45 coordenadas exatas; seleções coincidentes continuam acessíveis. O agente revisor independente confirmou os valores OOF, o fluxo de dados e o workflow de Pages.

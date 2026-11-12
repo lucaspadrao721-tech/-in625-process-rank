@@ -1,0 +1,23 @@
+:root {
+  color-scheme: dark;
+  --bg: #081116;
+  --bg-raised: #0c171d;
+  --surface: #101d24;
+  --surface-raised: #14242c;
+  --surface-hover: #182b34;
+  --line: #263942;
+  --line-bright: #35515c;
+  --ink: #e7f0f2;
+  --ink-soft: #a0b2b8;
+  --ink-dim: #70858d;
+  --cyan: #42dff4;
+  --cyan-dim: #1b8293;
+  --cyan-wash: rgba(66, 223, 244, .11);
+  --amber: #ffc477;
+  --amber-wash: rgba(255, 196, 119, .11);
+  --coral: #ff897e;
+  --coral-wash: rgba(255, 137, 126, .10);
+  --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --radius: 9px;
+}

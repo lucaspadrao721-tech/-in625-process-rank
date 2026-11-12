@@ -1,0 +1,2129 @@
+{
+  "project": "IN625 DED-LB single-track geometry screening",
+  "data_quality": {
+    "n_rows": 48,
+    "n_unique_conditions": 48,
+    "n_replicate_rows_beyond_first": 0,
+    "max_replicates_per_condition": 1,
+    "target_counts": {
+      "H_um": 48,
+      "W_um": 48,
+      "h_um": 22,
+      "DI_pct": 22,
+      "HW": 48
+    },
+    "input_levels": {
+      "Power_W": [
+        300.0,
+        400.0,
+        500.0,
+        600.0
+      ],
+      "Feed_g_min": [
+        5.0,
+        7.5,
+        10.0
+      ],
+      "Speed_mm_min": [
+        1000.0,
+        1500.0,
+        2000.0,
+        2500.0
+      ]
+    },
+    "hw_max_abs_error": 0.0,
+    "di_max_abs_error_percentage_points": 7.105427357601002e-15,
+    "missing_by_target": {
+      "H_um": 0,
+      "W_um": 0,
+      "h_um": 26,
+      "DI_pct": 26,
+      "HW": 0
+    },
+    "derived_target_notes": {
+      "HW": "A coluna H/W coincide com H/W; é uma resposta derivada, não medição independente.",
+      "DI_pct": "A fórmula 100*h/(h+H) coincide nas linhas disponíveis e segue a definição do estudo compatível se h for profundidade de penetração."
+    },
+    "source_unit_note": "A unidade da alimentação foi confirmada pelo usuário como g/min. A anotação g/mm na planilha é inconsistente e não é usada pelo pipeline; derivados nominais usam g/min.",
+    "design_note": "Rótulos ausentes não são imputados como medições. Réplicas da mesma condição ficam agrupadas na validação por combinação."
+  },
+  "model_diagnostics": {
+    "H_um": {
+      "n": 48,
+      "n_unique_conditions": 48,
+      "selected_model": "ridge_linear_physics",
+      "feature_mode": "physics",
+      "selected_parameters": {
+        "ridge_alpha": 1.0,
+        "polynomial_degree": 1
+      },
+      "inner_group_cv_mae_by_model": {
+        "ridge_linear_raw": 42.01099589129341,
+        "ridge_quadratic_raw": 40.21875832075809,
+        "ridge_linear_physics": 32.34646137778634
+      },
+      "cv_method": "CV aninhada agrupada por condição: até 4 folds externos e até 3 folds internos; réplicas da mesma combinação ficam juntas",
+      "cv_outer_folds": 4,
+      "cv_mae": 32.08474243914271,
+      "cv_rmse": 44.27097390825079,
+      "cv_r2": 0.9102213211649294,
+      "baseline_cv_mae": 115.5625,
+      "residual_abs_q90": 77.6840731437751,
+      "error_band_semantics": "Quantil amostral de erros nested-group-CV; banda empírica indicativa, não intervalo conformal nem probabilidade.",
+      "outer_models": [
+        "ridge_linear_physics",
+        "ridge_linear_physics",
+        "ridge_linear_physics",
+        "ridge_linear_physics"
+      ],
+      "factor_level_holdout": {
+        "Power_W": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 4,
+          "mae": 47.196695059605304,
+          "rmse": 59.814790598248685,
+          "folds": [
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 300.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 41.217092018986996,
+                "ridge_quadratic_raw": 40.73652711800972,
+                "ridge_linear_physics": 26.600250983546697
+              },
+              "mae": 57.73909572727351,
+              "rmse": 70.41576906968824
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 400.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 51.344094769721295,
+                "ridge_quadratic_raw": 49.860692617299904,
+                "ridge_linear_physics": 35.28602379247523
+              },
+              "mae": 33.73624824133986,
+              "rmse": 42.69293216566543
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 500.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 42.0804582609222,
+                "ridge_quadratic_raw": 42.16147988193169,
+                "ridge_linear_physics": 31.56977135090811
+              },
+              "mae": 35.98440271344233,
+              "rmse": 48.554204760563096
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 600.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 52.16685087144154,
+                "ridge_quadratic_raw": 45.549814993919014,
+                "ridge_linear_physics": 31.715348154269034
+              },
+              "mae": 61.32703355636553,
+              "rmse": 71.9211992860304
+            }
+          ]
+        },
+        "Feed_g_min": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 3,
+          "mae": 45.38788636012817,
+          "rmse": 54.53661638121501,
+          "folds": [
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 5.0,
+              "n_test": 16,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 48.99750822774634,
+                "ridge_quadratic_raw": 49.83793875755709,
+                "ridge_linear_physics": 38.62276203472853
+              },
+              "mae": 48.31196193845037,
+              "rmse": 54.50610562338196
+            },
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 7.5,
+              "n_test": 16,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 42.96047435525567,
+                "ridge_quadratic_raw": 41.259240853371374,
+                "ridge_linear_physics": 32.517648471626565
+              },
+              "mae": 37.55129556745307,
+              "rmse": 46.246826212371865
+            },
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 10.0,
+              "n_test": 16,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 35.64315879042272,
+                "ridge_quadratic_raw": 34.85031031744317,
+                "ridge_linear_physics": 24.30251286820196
+              },
+              "mae": 50.3004015744811,
+              "rmse": 61.7498428661226
+            }
+          ]
+        },
+        "Speed_mm_min": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 4,
+          "mae": 27.88790513107095,
+          "rmse": 37.60921268510881,
+          "folds": [
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 1000.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 30.01646118797917,
+                "ridge_quadratic_raw": 31.395798842252866,
+                "ridge_linear_physics": 24.80382307533741
+              },
+              "mae": 48.934815551207286,
+              "rmse": 56.919402746582826
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 1500.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 41.25511633427979,
+                "ridge_quadratic_raw": 40.78938332294783,
+                "ridge_linear_physics": 31.6161842738196
+              },
+              "mae": 25.275862266688165,
+              "rmse": 34.450761627199014
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 2000.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 47.87651039229803,
+                "ridge_quadratic_raw": 45.872112977149094,
+                "ridge_linear_physics": 40.03886403042975
+              },
+              "mae": 20.674352025255075,
+              "rmse": 27.01752653940695
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 2500.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 46.75700865170317,
+                "ridge_quadratic_raw": 46.35592970823572,
+                "ridge_linear_physics": 37.78936090124299
+              },
+              "mae": 16.666590681133282,
+              "rmse": 22.387304195584782
+            }
+          ]
+        }
+      }
+    },
+    "W_um": {
+      "n": 48,
+      "n_unique_conditions": 48,
+      "selected_model": "ridge_linear_physics",
+      "feature_mode": "physics",
+      "selected_parameters": {
+        "ridge_alpha": 1.0,
+        "polynomial_degree": 1
+      },
+      "inner_group_cv_mae_by_model": {
+        "ridge_linear_raw": 27.52082572696183,
+        "ridge_quadratic_raw": 30.45699939428465,
+        "ridge_linear_physics": 23.980717391290003
+      },
+      "cv_method": "CV aninhada agrupada por condição: até 4 folds externos e até 3 folds internos; réplicas da mesma combinação ficam juntas",
+      "cv_outer_folds": 4,
+      "cv_mae": 27.45375665852929,
+      "cv_rmse": 34.296845135888866,
+      "cv_r2": 0.9566434034619483,
+      "baseline_cv_mae": 148.9125,
+      "residual_abs_q90": 73.7662221747795,
+      "error_band_semantics": "Quantil amostral de erros nested-group-CV; banda empírica indicativa, não intervalo conformal nem probabilidade.",
+      "outer_models": [
+        "ridge_linear_physics",
+        "ridge_linear_raw",
+        "ridge_linear_physics",
+        "ridge_linear_physics"
+      ],
+      "factor_level_holdout": {
+        "Power_W": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 4,
+          "mae": 35.54973292026373,
+          "rmse": 43.33846585434389,
+          "folds": [
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 300.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 22.492352078941106,
+                "ridge_quadratic_raw": 21.62668115881876,
+                "ridge_linear_physics": 17.205080231150262
+              },
+              "mae": 55.516008703150334,
+              "rmse": 60.719212494304095
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 400.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 25.925066904433336,
+                "ridge_quadratic_raw": 31.442177838851038,
+                "ridge_linear_physics": 26.58557666341126
+              },
+              "mae": 29.512891462891456,
+              "rmse": 36.90935600633019
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 500.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 30.910695197215944,
+                "ridge_quadratic_raw": 33.41285824866942,
+                "ridge_linear_physics": 26.28771783996054
+              },
+              "mae": 21.257148632130214,
+              "rmse": 29.29699884045771
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 600.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 26.3205875140611,
+                "ridge_quadratic_raw": 32.1095744703803,
+                "ridge_linear_physics": 26.619030898570873
+              },
+              "mae": 35.912882882882904,
+              "rmse": 40.068104804747975
+            }
+          ]
+        },
+        "Feed_g_min": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 3,
+          "mae": 26.948058663798722,
+          "rmse": 34.91607189299021,
+          "folds": [
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 5.0,
+              "n_test": 16,
+              "selected_model": "ridge_linear_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 27.011937344185597,
+                "ridge_quadratic_raw": 31.773320461669222,
+                "ridge_linear_physics": 28.34490068386014
+              },
+              "mae": 32.63360085227271,
+              "rmse": 36.785669477531535
+            },
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 7.5,
+              "n_test": 16,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 28.52274628062809,
+                "ridge_quadratic_raw": 32.2680341220949,
+                "ridge_linear_physics": 27.894568860139632
+              },
+              "mae": 15.048529317301362,
+              "rmse": 19.627950013028894
+            },
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 10.0,
+              "n_test": 16,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 25.83047516147548,
+                "ridge_quadratic_raw": 27.75740909582388,
+                "ridge_linear_physics": 18.338508542908293
+              },
+              "mae": 33.16204582182209,
+              "rmse": 43.80587093855374
+            }
+          ]
+        },
+        "Speed_mm_min": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 4,
+          "mae": 33.59514430961696,
+          "rmse": 47.94536323921143,
+          "folds": [
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 1000.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 26.29779498157602,
+                "ridge_quadratic_raw": 30.49150769753116,
+                "ridge_linear_physics": 22.499486978695664
+              },
+              "mae": 70.40885772447048,
+              "rmse": 81.42386970667037
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 1500.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 29.603806582325017,
+                "ridge_quadratic_raw": 31.54245856571485,
+                "ridge_linear_physics": 22.893915756252355
+              },
+              "mae": 27.676176264170337,
+              "rmse": 35.96225023537504
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 2000.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 30.453187868663015,
+                "ridge_quadratic_raw": 31.15271119359459,
+                "ridge_linear_physics": 26.31174921303856
+              },
+              "mae": 18.303975142785504,
+              "rmse": 28.090029914844195
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 2500.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 29.25349724752196,
+                "ridge_quadratic_raw": 35.189441921359766,
+                "ridge_linear_physics": 27.952294543128186
+              },
+              "mae": 17.991568107041527,
+              "rmse": 21.97388549943546
+            }
+          ]
+        }
+      }
+    },
+    "h_um": {
+      "n": 22,
+      "n_unique_conditions": 22,
+      "selected_model": "ridge_linear_physics",
+      "feature_mode": "physics",
+      "selected_parameters": {
+        "ridge_alpha": 1.0,
+        "polynomial_degree": 1
+      },
+      "inner_group_cv_mae_by_model": {
+        "ridge_linear_raw": 6.341857389410737,
+        "ridge_quadratic_raw": 6.272562397292822,
+        "ridge_linear_physics": 6.247566026569578
+      },
+      "cv_method": "CV aninhada agrupada por condição: até 4 folds externos e até 3 folds internos; réplicas da mesma combinação ficam juntas",
+      "cv_outer_folds": 4,
+      "cv_mae": 7.24023397591857,
+      "cv_rmse": 9.588218829885708,
+      "cv_r2": 0.779098920543172,
+      "baseline_cv_mae": 24.29545454545455,
+      "residual_abs_q90": 17.165856391415502,
+      "error_band_semantics": "Quantil amostral de erros nested-group-CV; banda empírica indicativa, não intervalo conformal nem probabilidade.",
+      "outer_models": [
+        "ridge_linear_raw",
+        "ridge_quadratic_raw",
+        "ridge_linear_physics",
+        "ridge_linear_raw"
+      ],
+      "factor_level_holdout": {
+        "Power_W": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 3,
+          "mae": 7.512961589099106,
+          "rmse": 8.586921517841043,
+          "folds": [
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 400.0,
+              "n_test": 5,
+              "selected_model": "ridge_linear_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 10.196493434559304,
+                "ridge_quadratic_raw": 11.096192786518122,
+                "ridge_linear_physics": 11.406620177263955
+              },
+              "mae": 8.845794906540084,
+              "rmse": 9.274286571593608
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 500.0,
+              "n_test": 6,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 6.644587820444384,
+                "ridge_quadratic_raw": 6.0570652849860185,
+                "ridge_linear_physics": 5.795636445097395
+              },
+              "mae": 8.782473385571372,
+              "rmse": 10.036540150126822
+            },
+            {
+              "held_out_factor": "Power_W",
+              "held_out_level": 600.0,
+              "n_test": 11,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 11.271432598064818,
+                "ridge_quadratic_raw": 10.315752624117485,
+                "ridge_linear_physics": 8.803928033141755
+              },
+              "mae": 6.214667283095607,
+              "rmse": 7.30952105885007
+            }
+          ]
+        },
+        "Feed_g_min": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 3,
+          "mae": 7.065959765688756,
+          "rmse": 9.158374102393084,
+          "folds": [
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 5.0,
+              "n_test": 12,
+              "selected_model": "ridge_linear_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 8.347502673905826,
+                "ridge_quadratic_raw": 9.666047597576881,
+                "ridge_linear_physics": 8.59283168530229
+              },
+              "mae": 7.546216629764467,
+              "rmse": 10.208011640696999
+            },
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 7.5,
+              "n_test": 7,
+              "selected_model": "ridge_quadratic_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 6.075409801002849,
+                "ridge_quadratic_raw": 5.914954604899626,
+                "ridge_linear_physics": 6.451480848188264
+              },
+              "mae": 7.550592536097221,
+              "rmse": 8.806406701809514
+            },
+            {
+              "held_out_factor": "Feed_g_min",
+              "held_out_level": 10.0,
+              "n_test": 3,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 7.67035397300762,
+                "ridge_quadratic_raw": 7.951998027492188,
+                "ridge_linear_physics": 7.24488130368605
+              },
+              "mae": 4.014122511766153,
+              "rmse": 4.161583974220321
+            }
+          ]
+        },
+        "Speed_mm_min": {
+          "interpretation": "Stress test interno: cada nível é omitido por vez; não valida outra máquina, campanha, lote ou material.",
+          "n_levels_held_out": 4,
+          "mae": 9.25891458532732,
+          "rmse": 11.125678143568901,
+          "folds": [
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 1000.0,
+              "n_test": 4,
+              "selected_model": "ridge_linear_physics",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 10.14906439101744,
+                "ridge_quadratic_raw": 10.670062928103823,
+                "ridge_linear_physics": 8.788133242943537
+              },
+              "mae": 10.523727530411985,
+              "rmse": 12.156235667114776
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 1500.0,
+              "n_test": 5,
+              "selected_model": "ridge_quadratic_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 6.032080183537762,
+                "ridge_quadratic_raw": 5.242932028720941,
+                "ridge_linear_physics": 5.480434746345922
+              },
+              "mae": 8.749258131238825,
+              "rmse": 10.70779019344436
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 2000.0,
+              "n_test": 6,
+              "selected_model": "ridge_quadratic_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 8.16856120761943,
+                "ridge_quadratic_raw": 7.691180046138059,
+                "ridge_linear_physics": 7.947530219441234
+              },
+              "mae": 6.534353289073491,
+              "rmse": 8.59375596543537
+            },
+            {
+              "held_out_factor": "Speed_mm_min",
+              "held_out_level": 2500.0,
+              "n_test": 7,
+              "selected_model": "ridge_linear_raw",
+              "inner_group_cv_mae_by_model": {
+                "ridge_linear_raw": 7.36216686901217,
+                "ridge_quadratic_raw": 7.6349317134878865,
+                "ridge_linear_physics": 7.72633068056669
+              },
+              "mae": 11.235542909274004,
+              "rmse": 12.624690917414423
+            }
+          ]
+        }
+      }
+    },
+    "HW": {
+      "n": 48,
+      "n_unique_conditions": 48,
+      "selected_model": "derived_from_component_predictions",
+      "feature_mode": "deterministic_geometry_formula",
+      "component_targets": [
+        "H_um",
+        "W_um"
+      ],
+      "cv_method": "Fórmula aplicada somente a predições OOF dos componentes; os modelos-base são validados separadamente por condição.",
+      "cv_outer_folds": null,
+      "cv_mae": 0.055381720238815234,
+      "cv_rmse": 0.08015701350353063,
+      "cv_r2": 0.8196635853500132,
+      "baseline_cv_mae": 0.1510651631477439,
+      "residual_abs_q90": 0.14738432563898374,
+      "error_band_semantics": "Quantil amostral dos erros absolutos da fórmula aplicada a predições OOF; indicativo, não calibrado e sem capturar a covariância entre componentes.",
+      "outer_models": [],
+      "factor_level_holdout": {}
+    },
+    "DI_pct": {
+      "n": 22,
+      "n_unique_conditions": 22,
+      "selected_model": "derived_from_component_predictions",
+      "feature_mode": "deterministic_geometry_formula",
+      "component_targets": [
+        "h_um",
+        "H_um"
+      ],
+      "cv_method": "Fórmula aplicada somente a predições OOF dos componentes; os modelos-base são validados separadamente por condição.",
+      "cv_outer_folds": null,
+      "cv_mae": 2.3455821784826325,
+      "cv_rmse": 2.9564526912697846,
+      "cv_r2": 0.860865731003712,
+      "baseline_cv_mae": 8.083359569494085,
+      "residual_abs_q90": 5.44712616418763,
+      "error_band_semantics": "Quantil amostral dos erros absolutos da fórmula aplicada a predições OOF; indicativo, não calibrado e sem capturar a covariância entre componentes.",
+      "outer_models": [],
+      "factor_level_holdout": {}
+    }
+  },
+  "schema": {
+    "inputs": [
+      "Power_W",
+      "Feed_g_min",
+      "Speed_mm_min"
+    ],
+    "targets": [
+      "H_um",
+      "W_um",
+      "h_um",
+      "DI_pct",
+      "HW"
+    ],
+    "fitted_targets": [
+      "H_um",
+      "W_um",
+      "h_um"
+    ],
+    "derived_targets": {
+      "HW": "H_um / W_um",
+      "DI_pct": "100 * h_um / (h_um + H_um)"
+    },
+    "input_units": {
+      "Power_W": "W",
+      "Feed_g_min": "g/min",
+      "Speed_mm_min": "mm/min"
+    },
+    "output_units": {
+      "H_um": "µm",
+      "W_um": "µm",
+      "h_um": "µm",
+      "DI_pct": "%",
+      "HW": "dimensionless"
+    },
+    "target_definitions": {
+      "H_um": "mean deposited height above original substrate surface",
+      "W_um": "mean apparent bead width",
+      "h_um": "source column h mean; treated as penetration depth under the source-study definition",
+      "DI_pct": "source-table dilution percentage; source article defines 100*h/(h+H)",
+      "HW": "derived table ratio H/W; not an independent physical measurement"
+    },
+    "input_ranges": {
+      "Power_W": [
+        300.0,
+        600.0
+      ],
+      "Feed_g_min": [
+        5.0,
+        10.0
+      ],
+      "Speed_mm_min": [
+        1000.0,
+        2500.0
+      ]
+    },
+    "power_range_W": [
+      300.0,
+      600.0
+    ],
+    "feed_range_g_min": [
+      5.0,
+      10.0
+    ],
+    "speed_range_mm_min": [
+      1000.0,
+      2500.0
+    ],
+    "target_support_ranges": {
+      "H_um": {
+        "Power_W": [
+          300.0,
+          600.0
+        ],
+        "Feed_g_min": [
+          5.0,
+          10.0
+        ],
+        "Speed_mm_min": [
+          1000.0,
+          2500.0
+        ]
+      },
+      "W_um": {
+        "Power_W": [
+          300.0,
+          600.0
+        ],
+        "Feed_g_min": [
+          5.0,
+          10.0
+        ],
+        "Speed_mm_min": [
+          1000.0,
+          2500.0
+        ]
+      },
+      "h_um": {
+        "Power_W": [
+          400.0,
+          600.0
+        ],
+        "Feed_g_min": [
+          5.0,
+          10.0
+        ],
+        "Speed_mm_min": [
+          1000.0,
+          2500.0
+        ]
+      },
+      "DI_pct": {
+        "Power_W": [
+          400.0,
+          600.0
+        ],
+        "Feed_g_min": [
+          5.0,
+          10.0
+        ],
+        "Speed_mm_min": [
+          1000.0,
+          2500.0
+        ]
+      },
+      "HW": {
+        "Power_W": [
+          300.0,
+          600.0
+        ],
+        "Feed_g_min": [
+          5.0,
+          10.0
+        ],
+        "Speed_mm_min": [
+          1000.0,
+          2500.0
+        ]
+      }
+    },
+    "target_training_inputs": {
+      "H_um": [
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        }
+      ],
+      "W_um": [
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        }
+      ],
+      "h_um": [
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        }
+      ],
+      "DI_pct": [
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        }
+      ],
+      "HW": [
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 300.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 400.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 500.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 5.0,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 7.5,
+          "Speed_mm_min": 2500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 1500.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2000.0
+        },
+        {
+          "Power_W": 600.0,
+          "Feed_g_min": 10.0,
+          "Speed_mm_min": 2500.0
+        }
+      ]
+    },
+    "observed_combinations": [
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 300.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 400.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 500.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 5.0,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 7.5,
+        "Speed_mm_min": 2500.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1000.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 1500.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2000.0
+      },
+      {
+        "Power_W": 600.0,
+        "Feed_g_min": 10.0,
+        "Speed_mm_min": 2500.0
+      }
+    ],
+    "n_experiments": 48,
+    "n_unique_conditions": 48,
+    "feed_unit_confirmation": "g/min confirmado pelo usuário; o rótulo g/mm na planilha é inconsistente e foi sobrescrito.",
+    "source_path": "data/TabelaTotalSingleTracksIN625(1).xlsx",
+    "support_note": "Marginal bounds do not guarantee support throughout their Cartesian product; distances are descriptive only."
+  },
+  "interpretation_guardrails": [
+    "Only H, W and h are fitted as regressors; H/W and DI are derived deterministically from their predictions.",
+    "This package predicts measured geometric targets; it does not classify defects.",
+    "Nested grouped cross-validation uses up to 4 outer and 3 inner folds; it primarily estimates interpolation within this small design.",
+    "Factor-level holdouts are internal stress tests; they do not validate transfer to another machine, campaign, material, substrate, or optical setup.",
+    "Empirical absolute-error bands are not conformal intervals or probabilities of geometric conformity.",
+    "No defect probability is trained because no per-specimen defect labels and inspection protocol were supplied.",
+    "Energy and powder-per-length values are nominal indicators, not absorbed energy, captured mass, deposition productivity, or electrical efficiency.",
+    "Powder feed unit g/min was confirmed by the user; the inconsistent spreadsheet label g/mm is overridden.",
+    "The four multipass block outcomes from the source article are stored as external context, not as single-track training labels."
+  ],
+  "reference_window": {
+    "source": "https://link.springer.com/article/10.1007/s11665-026-14887-8",
+    "DI_pct": [
+      10.0,
+      30.0
+    ],
+    "H_over_W": [
+      0.2,
+      0.3333333333333333
+    ],
+    "scope": "Study-specific geometric screening only; not universal defect thresholds."
+  },
+  "source_study_multipass_block_evidence": {
+    "source": "https://link.springer.com/article/10.1007/s11665-026-14887-8/tables/4",
+    "cases": [
+      {
+        "case_id": "P415",
+        "power_W": 400.0,
+        "feed_g_min": 5.2,
+        "speed_mm_min": 1500.0,
+        "single_bead_width_mm": 0.66,
+        "hatch_spacing_mm": 0.46,
+        "overlap_pct": 30.0,
+        "layer_increment_mm": 0.6,
+        "reported_VED_J_mm3": 60.0,
+        "average_layer_thickness_um": 583.0,
+        "layer_thickness_plus_minus_um": 22.0,
+        "combined_porosity_and_LoF_vol_pct": 2.4,
+        "observed_modes": [
+          "lack_of_fusion",
+          "porosity"
+        ]
+      },
+      {
+        "case_id": "P515",
+        "power_W": 500.0,
+        "feed_g_min": 5.2,
+        "speed_mm_min": 1500.0,
+        "single_bead_width_mm": 0.8,
+        "hatch_spacing_mm": 0.56,
+        "overlap_pct": 30.0,
+        "layer_increment_mm": 0.6,
+        "reported_VED_J_mm3": 63.0,
+        "average_layer_thickness_um": 570.0,
+        "layer_thickness_plus_minus_um": 16.0,
+        "combined_porosity_and_LoF_vol_pct": 0.2,
+        "observed_modes": [
+          "lack_of_fusion",
+          "porosity"
+        ]
+      },
+      {
+        "case_id": "P420",
+        "power_W": 400.0,
+        "feed_g_min": 5.2,
+        "speed_mm_min": 2000.0,
+        "single_bead_width_mm": 0.63,
+        "hatch_spacing_mm": 0.44,
+        "overlap_pct": 30.0,
+        "layer_increment_mm": 0.55,
+        "reported_VED_J_mm3": 53.0,
+        "average_layer_thickness_um": 518.0,
+        "layer_thickness_plus_minus_um": 8.0,
+        "combined_porosity_and_LoF_vol_pct": 2.42,
+        "observed_modes": [
+          "lack_of_fusion",
+          "porosity"
+        ]
+      },
+      {
+        "case_id": "P520",
+        "power_W": 500.0,
+        "feed_g_min": 5.2,
+        "speed_mm_min": 2000.0,
+        "single_bead_width_mm": 0.75,
+        "hatch_spacing_mm": 0.53,
+        "overlap_pct": 30.0,
+        "layer_increment_mm": 0.55,
+        "reported_VED_J_mm3": 58.0,
+        "average_layer_thickness_um": 488.0,
+        "layer_thickness_plus_minus_um": 14.0,
+        "combined_porosity_and_LoF_vol_pct": 0.16,
+        "observed_modes": [
+          "scattered_porosity",
+          "no_LoF_observed_in_reported_cross_sections"
+        ]
+      }
+    ],
+    "use": "Context-only evidence for candidate assessment; not included in model fitting or interpreted as transferable defect probabilities.",
+    "measured_percentage_definition": "Table 4 porosity (%) includes both porosity and lack of fusion."
+  },
+  "source_study_power_gates": {
+    "cases": [
+      {
+        "power_W": 300.0,
+        "gate_id": "source_study_300W_dilution",
+        "reason": "O artigo relata que os cordões a 300 W não atingiram a diluição-alvo e foram descartados da seleção."
+      },
+      {
+        "power_W": 600.0,
+        "gate_id": "source_study_600W_oxidation",
+        "reason": "O artigo relata marcas de oxidação a 600 W independentemente da alimentação de pó e velocidade; essas condições foram excluídas da análise subsequente."
+      }
+    ],
+    "use": "Selection observations from the source article; not defect classifier labels or universal material/process thresholds."
+  }
+}

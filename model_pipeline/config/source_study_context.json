@@ -1,0 +1,19 @@
+{
+  "active": true,
+  "id": "in625_ded_lb_source_study_2026",
+  "fingerprint_algorithm": "sha256 de JSON canônico UTF-8 com colunas COLUMNS e valores do dataframe carregado, preservando ordem; NaN vira null",
+  "dataframe_fingerprint": "sha256:f7a103c1a81a46ccc1fe532310773234e9dd228d5cc5a5fd770f6f6d3ded298b",
+  "power_gates": [
+    {
+      "power_W": 300.0,
+      "gate_id": "source_study_300W_dilution",
+      "reason": "O artigo relata que os cordões a 300 W não atingiram a diluição-alvo e foram descartados da seleção."
+    },
+    {
+      "power_W": 600.0,
+      "gate_id": "source_study_600W_oxidation",
+      "reason": "O artigo relata marcas de oxidação em amostras a 600 W, independentemente da alimentação e velocidade."
+    }
+  ],
+  "scope": "Restrições exclusivas à base original IN625 DED-LB cujo fingerprint coincide. Qualquer dataframe diferente mantém este contexto inativo até configuração explícita e revisão científica."
+}
